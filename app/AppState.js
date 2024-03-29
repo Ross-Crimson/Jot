@@ -7,7 +7,7 @@ class ObservableAppState extends EventEmitter {
   notes = [
     new Note({
       name: 'First Note',
-      color: '#000000',
+      color: '#e10921',
       body: 'This is the first note'
     })
 
