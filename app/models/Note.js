@@ -28,7 +28,7 @@ export class Note {
                 <div>${this.lastEdited}</div>
             </div>
             <div class="col-8">
-                <textarea onblur="functiontosavenote" class="form-control" name="body" id="body" cols="30"
+                <textarea onblur="app.NotesController.UpdateActiveNote()" class="form-control" name="body" id="body" cols="30"
                     rows="10">${this.NoteBodyText}</textarea>
             </div>
             <div class="col-1">

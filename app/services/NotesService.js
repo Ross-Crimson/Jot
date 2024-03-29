@@ -6,6 +6,11 @@ class NotesService {
         AppState.notes.push(new Note(noteFormInfo))
     }
 
+    UpdateActiveNote(textNoteArea) {
+        AppState.activeNote.body = textNoteArea
+        //console.log(AppState.notes)
+    }
+
     DeleteActiveNote(noteId) {
         const noteToDeleteIndex = AppState.notes.findIndex(note => note.id == noteId)
         AppState.notes.splice(noteToDeleteIndex, 1)

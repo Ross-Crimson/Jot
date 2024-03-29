@@ -21,22 +21,25 @@ export class NotesController {
 
     DrawActiveNote() {
         if (AppState.activeNote == null) {
-            setHTML('active-note', NoActiveNoteView)
+            //setHTML('active-note', NoActiveNoteView)
             return
         }
         setHTML('active-note', AppState.activeNote.ActiveNoteView)
     }
 
     SetActiveNote(noteId) {
-        console.log(noteId)
         notesService.SetActiveNote(noteId)
+    }
+
+    UpdateActiveNote() {
+        const textNoteArea = event.target.value
+        notesService.UpdateActiveNote(textNoteArea)
     }
 
     AddNewNote() {
         event.preventDefault()
         const form = event.target
         const noteFormInfo = getFormData(form)
-        console.log(noteFormInfo)
         notesService.AddNewNote(noteFormInfo)
     }
 
@@ -44,17 +47,4 @@ export class NotesController {
         notesService.DeleteActiveNote(noteId)
     }
 
-}
-function NoActiveNoteView() {
-    return `
-    <div class="col-3">
-            <div>Select New Note</div>
-            <div></div>
-            <div></div>
-        </div>
-        <div class="col-8">
-            <textarea onblur="functiontosavenote" class="form-control" name="body" id="body" cols="30"
-                rows="10"></textarea>
-        </div>
-    `
 }
