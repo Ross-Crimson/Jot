@@ -9,6 +9,7 @@ export class NotesController {
         this.DrawNotes()
         AppState.on('activeNote', this.DrawActiveNote)
         AppState.on('notes', this.DrawNotes)
+        notesService.LoadNotes()
     }
 
     DrawNotes() {
@@ -41,6 +42,7 @@ export class NotesController {
         const form = event.target
         const noteFormInfo = getFormData(form)
         notesService.AddNewNote(noteFormInfo)
+        form.reset()
     }
 
     DeleteActiveNote(noteId) {
