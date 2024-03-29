@@ -2,10 +2,11 @@
 
     <!-- SECTION Note Management -->
     <div class="col">
+        <div id="total-notes"></div>
         <!-- SECTION New Note Add -->
         <div>
-            <form onsubmit="functionpathgoeshere">
-                <input type="text" name="name" id="name" minlength="3" maxlength="15" placeholder="New Note">
+            <form onsubmit="app.NotesController.AddNewNote()">
+                <input type="text" name="name" id="name" minlength="3" maxlength="15" required placeholder="New Note">
                 <input type="color" name="color" id="color">
                 <button type="submit">+</button>
             </form>

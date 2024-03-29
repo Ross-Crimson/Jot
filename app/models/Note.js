@@ -15,7 +15,6 @@ export class Note {
         <div onclick="app.NotesController.SetActiveNote('${this.id}')">
                 <div class="notes">
                     <div style="color:${this.color}">${this.name}</div>
-                    <div>NoteIdentifier</div>
                 </div>
             </div>
         `
@@ -23,6 +22,23 @@ export class Note {
 
     get ActiveNoteView() {
         return `
+        <div class="col-3">
+                <div style="color:${this.color}">${this.name}</div>
+                <div>${this.createdDate}</div>
+                <div>${this.lastEdited}</div>
+            </div>
+            <div class="col-8">
+                <textarea onblur="functiontosavenote" class="form-control" name="body" id="body" cols="30"
+                    rows="10">${this.NoteBodyText}</textarea>
+            </div>
+            <div class="col-1">
+                <div onclick="app.NotesController.DeleteActiveNote('${this.id}')" type="button"><i class="mdi mdi-delete-circle"></i></div>
+            </div>
         `
+    }
+
+    get NoteBodyText() {
+        if (this.body == undefined) return ''
+        else return this.body
     }
 }
