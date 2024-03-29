@@ -2,6 +2,7 @@ import { AppState } from "../AppState.js"
 import { Note } from "../models/Note.js"
 import { notesService } from "../services/NotesService.js"
 import { getFormData } from "../utils/FormHandler.js"
+import { Pop } from "../utils/Pop.js"
 import { setHTML, setText } from "../utils/Writer.js"
 
 export class NotesController {
@@ -33,6 +34,7 @@ export class NotesController {
     }
 
     UpdateActiveNote() {
+        // @ts-ignore
         const textNoteArea = event.target.value
         notesService.UpdateActiveNote(textNoteArea)
     }
@@ -42,10 +44,13 @@ export class NotesController {
         const form = event.target
         const noteFormInfo = getFormData(form)
         notesService.AddNewNote(noteFormInfo)
+        // @ts-ignore
         form.reset()
     }
 
-    DeleteActiveNote(noteId) {
+    async DeleteActiveNote(noteId) {
+        let choice = await Pop.confirm("Delete This Note Forever?", "You worked real hard on it", "Delete", "question")
+        if (!choice) return
         notesService.DeleteActiveNote(noteId)
     }
 

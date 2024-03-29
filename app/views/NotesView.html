@@ -1,43 +1,73 @@
-<section class="row text-light">
+<section class="container-fluid">
+    <div class="row text-light">
 
-    <!-- SECTION Note Management -->
-    <div class="col">
-        <div id="total-notes"></div>
-        <!-- SECTION New Note Add -->
-        <div>
-            <form onsubmit="app.NotesController.AddNewNote()">
-                <input type="text" name="name" id="name" minlength="3" maxlength="15" required placeholder="New Note">
-                <input type="color" value="#ffffff" name="color" id="color">
-                <button type="submit">+</button>
-            </form>
-        </div>
-
-        <div id="existing-notes">
-            <!-- <div onclick="selectNoteFunctionGoesHere">
-                <div class="notes">
-                    <div>Note Name</div>
-                    <div>NoteIdentifier</div>
+        <!-- SECTION Note Management -->
+        <div class="col-2">
+            <a class="btn btn-primary m-5" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                aria-controls="offcanvasExample">
+                Your Notes
+            </a>
+            <div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasExample"
+                aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Notes</h5>
+                    <button type="button" class="btn-close bg-danger" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
                 </div>
-            </div> -->
-        </div>
-    </div>
+                <div class="offcanvas-body">
+                    <!-- <div class="dropdown mt-3">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        Dropdown button
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </div> -->
 
-    <!-- SECTION View and edit selected Note -->
-    <div class="col">
-        <div id="active-note" class="row">
-            <div class="col-3">
-                <div>Note Name</div>
-                <div>Date Created</div>
-                <div>Date Last Saved</div>
+                    <div>Total Notes: <span id="total-notes"></span></div>
+                    <!-- SECTION New Note Add -->
+                    <div>
+                        <form onsubmit="app.NotesController.AddNewNote()">
+                            <input type="text" name="name" id="name" minlength="3" maxlength="15" required
+                                placeholder="New Note">
+                            <input type="color" value="#ffffff" name="color" id="color">
+                            <button type="submit">+</button>
+                        </form>
+                    </div>
+
+                    <div id="existing-notes">
+
+                    </div>
+
+
+                </div>
             </div>
-            <div class="col-8">
-                <textarea onblur="functiontosavenote" class="form-control" name="body" id="body" cols="30"
-                    rows="10"></textarea>
-            </div>
-            <div class="col-1">
-                <div onclick="functiontodeleteNote" type="button"><i class="mdi mdi-delete-circle"></i></div>
-            </div>
+
         </div>
 
+        <!-- SECTION View and edit selected Note -->
+        <div class="col-8">
+            <div id="active-note" class="row">
+                <div class="pt-5 mt-5 text-center">
+                    Select a Note
+                </div>
+                <!-- <div class="col-3">
+                    <div>Note Name</div>
+                    <div>Date Created</div>
+                    <div>Date Last Saved</div>
+                </div>
+                <div class="col-7">
+                    <textarea onblur="functiontosavenote" class="form-control" name="body" id="body" cols="30"
+                        rows="10"></textarea>
+                </div>
+                <div class="col-1">
+                    <div onclick="functiontodeleteNote" type="button" class="fs-1"><i class="mdi mdi-delete-circle"></i>
+                    </div>
+                </div> -->
+            </div>
+
+        </div>
     </div>
 </section>

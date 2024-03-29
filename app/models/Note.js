@@ -12,8 +12,8 @@ export class Note {
 
     get NoteSelectorView() {
         return `
-        <div onclick="app.NotesController.SetActiveNote('${this.id}')">
-                <div class="notes">
+        <div onclick="app.NotesController.SetActiveNote('${this.id}')" data-bs-dismiss="offcanvas">
+                <div>
                     <div style="color:${this.color}">${this.name}</div>
                 </div>
             </div>
@@ -24,15 +24,15 @@ export class Note {
         return `
         <div class="col-3">
                 <div style="color:${this.color}">${this.name}</div>
-                <div>${this.createdDate}</div>
-                <div>${this.lastEdited}</div>
+                <div>${this.CreatedDateFormatted}</div>
+                <div>${this.LastEditedTimeFormatted}</div>
             </div>
             <div class="col-8">
                 <textarea onblur="app.NotesController.UpdateActiveNote()" class="form-control" name="body" id="body" cols="30"
-                    rows="10">${this.NoteBodyText}</textarea>
+                    rows="10" >${this.NoteBodyText}</textarea>
             </div>
             <div class="col-1">
-                <div onclick="app.NotesController.DeleteActiveNote('${this.id}')" type="button"><i class="mdi mdi-delete-circle"></i></div>
+                <div  class="fs-1"><i onclick="app.NotesController.DeleteActiveNote('${this.id}')" type="button" class="mdi mdi-delete-circle"></i></div>
             </div>
         `
     }
@@ -40,5 +40,13 @@ export class Note {
     get NoteBodyText() {
         if (this.body == undefined) return ''
         else return this.body
+    }
+
+    get CreatedDateFormatted() {
+        return this.createdDate.toLocaleString()
+    }
+
+    get LastEditedTimeFormatted() {
+        return this.lastEdited.toLocaleString()
     }
 }

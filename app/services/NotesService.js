@@ -5,12 +5,15 @@ import { loadState, saveState } from "../utils/Store.js"
 class NotesService {
     AddNewNote(noteFormInfo) {
         let newNote = AppState.notes.push(new Note(noteFormInfo))
+        //set note at position in array to active
         AppState.activeNote = AppState.notes[newNote - 1]
         this.SaveNotes()
     }
 
     UpdateActiveNote(textNoteArea) {
         AppState.activeNote.body = textNoteArea
+        AppState.activeNote.lastEdited = new Date()
+        AppState.emit('activeNote')
         //console.log(AppState.notes)
         this.SaveNotes()
     }
