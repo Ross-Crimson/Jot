@@ -1,10 +1,40 @@
-<section class="row">
+<section class="row text-light">
+
+    <!-- SECTION Note Management -->
     <div class="col">
-        <form action="">
-            <input type="text">
-        </form>
+        <!-- SECTION New Note Add -->
+        <div>
+            <form onsubmit="functionpathgoeshere">
+                <input type="text" name="name" id="name" minlength="3" maxlength="15" placeholder="New Note">
+                <input type="color" name="color" id="color">
+                <button type="submit">+</button>
+            </form>
+        </div>
+
+        <div id="existing-notes">
+            <div onclick="selectNoteFunctionGoesHere">
+                <div>Note Name</div>
+                <div>NoteIdentifier</div>
+            </div>
+        </div>
     </div>
+
+    <!-- SECTION View and edit selected Note -->
     <div class="col">
+        <div id="active-note" class="row">
+            <div class="col-3">
+                <div>Note Name</div>
+                <div>Date Created</div>
+                <div>Date Last Saved</div>
+            </div>
+            <div class="col-8">
+                <textarea onblur="functiontosavenote" class="form-control" name="body" id="body" cols="30"
+                    rows="10"></textarea>
+            </div>
+            <div class="col-1">
+                <button onclick="functiontodeleteNote" type="button"><i class="mdi mdi-delete-circle"></i></button>
+            </div>
+        </div>
 
     </div>
 </section>
