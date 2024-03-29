@@ -1,1 +1,13 @@
 /* BASIC STYLES HERE */
+.note-submission {
+    display: flex;
+    align-items: center;
+    margin: 20px 5px;
+}
+
+.note-area-background {
+    border-style: solid;
+    border-width: .1em;
+    background-color: rgba(255, 255, 255, .15);
+    background-size: contain;
+}

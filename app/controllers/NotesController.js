@@ -29,6 +29,13 @@ export class NotesController {
         setHTML('active-note', AppState.activeNote.ActiveNoteView)
     }
 
+    DrawDummyNote() {
+        const dummyHTML = `<div class="mt-5 text-center">
+        Select a Note
+    </div>`
+        setHTML('active-note', dummyHTML)
+    }
+
     SetActiveNote(noteId) {
         notesService.SetActiveNote(noteId)
     }
@@ -52,6 +59,7 @@ export class NotesController {
         let choice = await Pop.confirm("Delete This Note Forever?", "You worked real hard on it", "Delete", "question")
         if (!choice) return
         notesService.DeleteActiveNote(noteId)
+        this.DrawDummyNote()
     }
 
 }

@@ -8,11 +8,12 @@ export class Note {
         this.body = data.body
         this.createdDate = data.createdDate == undefined ? new Date() : new Date(data.createdDate)
         this.lastEdited = data.lastEdited == undefined ? new Date : new Date(data.lastEdited)
+        this.bgImg = data.bgImg
     }
 
     get NoteSelectorView() {
         return `
-        <div onclick="app.NotesController.SetActiveNote('${this.id}')" data-bs-dismiss="offcanvas">
+        <div onclick="app.NotesController.SetActiveNote('${this.id}')" class="py-3" data-bs-dismiss="offcanvas">
                 <div>
                     <div style="color:${this.color}">${this.name}</div>
                 </div>
@@ -22,17 +23,19 @@ export class Note {
 
     get ActiveNoteView() {
         return `
-        <div class="col-3">
-                <div style="color:${this.color}">${this.name}</div>
-                <div>${this.CreatedDateFormatted}</div>
-                <div>${this.LastEditedTimeFormatted}</div>
-            </div>
-            <div class="col-8">
-                <textarea onblur="app.NotesController.UpdateActiveNote()" class="form-control" name="body" id="body" cols="30"
-                    rows="10" >${this.NoteBodyText}</textarea>
-            </div>
-            <div class="col-1">
-                <div  class="fs-1"><i onclick="app.NotesController.DeleteActiveNote('${this.id}')" type="button" class="mdi mdi-delete-circle"></i></div>
+            <div class="row p-5 rounded note-area-background" style="border-color: ${this.color}; background-image: url(${this.bgImg})">
+                <div class="col-3">
+                    <h4 style="color:${this.color}">${this.name}</h4>
+                    <div class="pt-3">${this.CreatedDateFormatted}</div>
+                    <div class="pt-3">${this.LastEditedTimeFormatted}</div>
+                </div>
+                <div class="col-8">
+                    <textarea onblur="app.NotesController.UpdateActiveNote()" class="form-control" name="body" id="body" cols="30"
+                        rows="20" >${this.NoteBodyText}</textarea>
+                </div>
+                <div class="col-1">
+                    <div  class="fs-1"><i onclick="app.NotesController.DeleteActiveNote('${this.id}')" type="button" class="mdi mdi-delete-circle"></i></div>
+                </div>
             </div>
         `
     }
@@ -48,5 +51,9 @@ export class Note {
 
     get LastEditedTimeFormatted() {
         return this.lastEdited.toLocaleString()
+    }
+
+    get BackgroundImg() {
+        return
     }
 }
